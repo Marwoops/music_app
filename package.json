@@ -1,18 +1,30 @@
 {
   "name": "music_app",
   "version": "1.0.0",
-  "description": "A music app containing a server using node/express and a player in react/electron",
-  "main": "app.js",
+  "description": "A music app containing a server using node/express and a player using react/electron",
+  "main": "main.js",
   "scripts": {
-    "build": "babel server/server.js --out-file server/server-transpiled.js",
-    "server": "node server/server-transpiled.js"
+    "build-server": "babel server/server.js --out-file server/server-transpiled.js",
+    "server": "node server/server-transpiled.js",
+    "build-player-app": "webpack",
+    "player-app": "electron ./player/main.js"
   },
   "author": "marwoops",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-env": "^2.4.1",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
-    "express": "^4.16.2"
+    "babel-preset-react": "^6.24.1",
+    "electron": "^1.7.10",
+    "express": "^4.16.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
   }
 }
