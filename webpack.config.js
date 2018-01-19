@@ -4,7 +4,7 @@ module.exports = {
 
     target: 'electron',
 
-    entry: './player/src/app.js',
+    entry: './player/src/entry.js',
 
     output: {
         path: __dirname + '/player/build/',
