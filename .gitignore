@@ -1,2 +1,4 @@
 /node_modules/
 yarn.lock
+server/music/
+!server/music/info.txt
