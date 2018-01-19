@@ -2,6 +2,8 @@ import express from 'express';
 import fs from 'fs';
 
 let app = express();
+let musicPath = __dirname + '/music';
+let musics = [];
 
 app.get('/music', (req, res) => {
 
@@ -18,6 +20,25 @@ app.get('/music', (req, res) => {
             console.log('file doesn\'t exists');
             res.end()
         }
+    });
+});
+
+app.get('/list', (req, res) => {
+
+    musics = [];
+    
+    fs.readdir(musicPath, (err, items) => {
+
+        for (let i = 0; i < items.length; i++) {
+
+            if (items[i].substr(items[i].length - 4) === '.mp3') {
+
+                musics.push(items[i].slice(0, -4));
+            };
+        };
+
+        res.send(musics);
+        res.end();
     });
 });
 
