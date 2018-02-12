@@ -12,6 +12,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = (0, _express2.default)();
 
+var musicList = [];
+var musicPath = __dirname + '/music/';
+
 app.get('/music', function (req, res) {
 
     var fileId = req.query.id;
@@ -26,6 +29,23 @@ app.get('/music', function (req, res) {
             console.log('file doesn\'t exists');
             res.end();
         }
+    });
+});
+
+app.get('/list', function (req, res) {
+
+    musicList = [];
+    _fs2.default.readdir(musicPath, function (err, items) {
+
+        for (var i = 0; i < items.length; i++) {
+
+            if (items[i].slice(-4) === '.mp3') {
+
+                musicList.push(items[i].slice(0, -4));
+            };
+        };
+        res.send(musicList);
+        res.end();
     });
 });
 
