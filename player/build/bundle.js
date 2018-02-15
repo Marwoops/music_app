@@ -7587,17 +7587,7 @@ var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _previous = __webpack_require__(28);
-
-var _previous2 = _interopRequireDefault(_previous);
-
-var _playPause = __webpack_require__(29);
-
-var _playPause2 = _interopRequireDefault(_playPause);
-
-var _next = __webpack_require__(30);
-
-var _next2 = _interopRequireDefault(_next);
+var _controls = __webpack_require__(31);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7699,9 +7689,9 @@ var MusicManager = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_previous2.default, { onClick: this.previousMusic.bind(this) }),
-                _react2.default.createElement(_playPause2.default, { onClick: this.playPauseMusic.bind(this) }),
-                _react2.default.createElement(_next2.default, { onClick: this.nextMusic.bind(this) })
+                _react2.default.createElement(_controls.Previous, { onClick: this.previousMusic.bind(this) }),
+                _react2.default.createElement(_controls.PlayPause, { onClick: this.playPauseMusic.bind(this) }),
+                _react2.default.createElement(_controls.Next, { onClick: this.nextMusic.bind(this) })
             );
         }
     }]);
@@ -7714,7 +7704,10 @@ var MusicManager = function (_React$Component) {
 exports.default = MusicManager;
 
 /***/ }),
-/* 28 */
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7723,6 +7716,7 @@ exports.default = MusicManager;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Next = exports.PlayPause = exports.Previous = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -7742,7 +7736,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Previous = function (_React$Component) {
+var Previous = exports.Previous = function (_React$Component) {
     _inherits(Previous, _React$Component);
 
     function Previous(props) {
@@ -7769,39 +7763,10 @@ var Previous = function (_React$Component) {
     return Previous;
 }(_react2.default.Component);
 
-exports.default = Previous;
+;
 
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(7);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var PlayPause = function (_React$Component) {
-    _inherits(PlayPause, _React$Component);
+var PlayPause = exports.PlayPause = function (_React$Component2) {
+    _inherits(PlayPause, _React$Component2);
 
     function PlayPause(props) {
         _classCallCheck(this, PlayPause);
@@ -7812,12 +7777,12 @@ var PlayPause = function (_React$Component) {
     _createClass(PlayPause, [{
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this4 = this;
 
             return _react2.default.createElement(
                 'button',
                 { onClick: function onClick() {
-                        return _this2.props.onClick();
+                        return _this4.props.onClick();
                     } },
                 'PLAY'
             );
@@ -7827,39 +7792,10 @@ var PlayPause = function (_React$Component) {
     return PlayPause;
 }(_react2.default.Component);
 
-exports.default = PlayPause;
+;
 
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(7);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Next = function (_React$Component) {
-    _inherits(Next, _React$Component);
+var Next = exports.Next = function (_React$Component3) {
+    _inherits(Next, _React$Component3);
 
     function Next(props) {
         _classCallCheck(this, Next);
@@ -7870,12 +7806,12 @@ var Next = function (_React$Component) {
     _createClass(Next, [{
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this6 = this;
 
             return _react2.default.createElement(
                 'button',
                 { onClick: function onClick() {
-                        return _this2.props.onClick();
+                        return _this6.props.onClick();
                     } },
                 'NEXT'
             );
@@ -7885,7 +7821,7 @@ var Next = function (_React$Component) {
     return Next;
 }(_react2.default.Component);
 
-exports.default = Next;
+;
 
 /***/ })
 /******/ ]);

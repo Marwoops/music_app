@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Previous from './previous'
-import PlayPause from './playPause';
-import Next from './next';
-
+import {Previous, PlayPause, Next} from './controls';
 
 class MusicManager extends React.Component {
 
@@ -71,7 +68,7 @@ class MusicManager extends React.Component {
     };
 
     nextMusic() {
-        
+
         if (this.state.loopList) {
 
             this.state.index = (this.state.index + 1) % this.state.musicList.length;
