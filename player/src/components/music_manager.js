@@ -5,7 +5,6 @@ import Previous from './previous'
 import PlayPause from './playPause';
 import Next from './next';
 
-let audio = new Audio();
 
 class MusicManager extends React.Component {
 
@@ -18,7 +17,12 @@ class MusicManager extends React.Component {
             loopList: true,
             loopMusic: false
         };
+
+        this.audio = new Audio();
+        this.audio.onended = this.nextMusic.bind(this);
+
     };
+
 
     componentDidMount() {
         
@@ -29,7 +33,7 @@ class MusicManager extends React.Component {
                 musicList: data
             })
         })
-        .then(() => this.updateMusic(this.state.musicList[0]))
+        .then(() => this.audio.src = this.state.musicURL + this.state.musicList[this.state.index] + '.mp3');
     };
 
     previousMusic() {
@@ -46,9 +50,7 @@ class MusicManager extends React.Component {
 
         }
 
-        this.updateMusic(this.state.musicList[this.state.index]);
-        audio.play();
-        this.setState({playingMusic: true});
+        this.updateMusic();
 
     };
 
@@ -56,12 +58,12 @@ class MusicManager extends React.Component {
 
         if (this.state.playingMusic === false) {
 
-            audio.play();
+            this.audio.play();
             this.setState({playingMusic: true})
 
         } else {
 
-            audio.pause();
+            this.audio.pause();
             this.setState({playingMusic: false});
 
         };
@@ -69,21 +71,23 @@ class MusicManager extends React.Component {
     };
 
     nextMusic() {
-
+        
         if (this.state.loopList) {
 
             this.state.index = (this.state.index + 1) % this.state.musicList.length;
 
         }
 
-        this.updateMusic(this.state.musicList[this.state.index]);
-        audio.play();
-        this.setState({playingMusic: true});
+        this.updateMusic();
 
     };
 
-    updateMusic(musicName) {
-        audio.src = this.state.musicURL + musicName + '.mp3';
+    updateMusic() {
+
+        this.audio.src = this.state.musicURL + this.state.musicList[this.state.index] + '.mp3';
+        this.audio.play();
+        this.setState({playingMusic: true});
+
     };
 
     render() {
