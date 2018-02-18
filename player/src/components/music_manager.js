@@ -10,6 +10,7 @@ class MusicManager extends React.Component {
         this.state = {
             musicURL: "http://localhost:3003/music?id=",
             playingMusic: false,
+            currentSong: "",
             index: 0,
             loopList: true,
             loopMusic: false
@@ -30,7 +31,8 @@ class MusicManager extends React.Component {
                 musicList: data
             })
         })
-        .then(() => this.audio.src = this.state.musicURL + this.state.musicList[this.state.index] + '.mp3');
+        .then(() => this.audio.src = this.state.musicURL + this.state.musicList[this.state.index] + '.mp3')
+        .then(() => this.setState({currentSong: this.state.musicList[this.state.index]}))
     };
 
     previousMusic() {
@@ -83,13 +85,14 @@ class MusicManager extends React.Component {
 
         this.audio.src = this.state.musicURL + this.state.musicList[this.state.index] + '.mp3';
         this.audio.play();
-        this.setState({playingMusic: true});
+        this.setState({currentSong: this.state.musicList[this.state.index]});
 
     };
 
     render() {
         return (
             <div>
+                <p id="SongDisplay">{this.state.currentSong}</p>
                 <Previous onClick={this.previousMusic.bind(this)}/>
                 <PlayPause onClick={this.playPauseMusic.bind(this)}/>
                 <Next onClick={this.nextMusic.bind(this)}/>
